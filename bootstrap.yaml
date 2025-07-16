@@ -21,7 +21,7 @@ spec:
       path: infrastructure
       directory:
         recurse: true
-        exclude: "values.yaml"
+        include: "**/app.{yaml,yml,json}"
 
   syncPolicy:
     automated: {}
