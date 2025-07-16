@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubeview
+spec:
+  project: infrastructure
+
+  destination:
+    name: in-cluster
+    namespace: kubeview
+
+  sources:
+    - repoURL: https://code.benco.io/kubeview/deploy/helm
+      chart: kubeview
+      targetRevision: "*"
+      helm:
+        ignoreMissingValueFiles: true
+        valueFiles:
+          - $values/infrastructure/kubeview/values.yaml
+    - repoURL: https://github.com/mirza-src/cc-argocd-gitops.git
+      ref: values

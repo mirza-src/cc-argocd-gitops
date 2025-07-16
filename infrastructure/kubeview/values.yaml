@@ -1,0 +1,3 @@
+# Show only the pods in a single namespace
+singleNamespace: stirling-pdf
+
