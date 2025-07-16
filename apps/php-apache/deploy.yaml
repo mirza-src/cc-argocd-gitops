@@ -19,9 +19,7 @@ spec:
             - containerPort: 80
           resources:
             limits:
-              cpu: 500m
-            requests:
-              cpu: 200m
+              cpu: 100m
       tolerations:
         - key: "kubernetes.azure.com/scalesetpriority"
           operator: "Equal"
