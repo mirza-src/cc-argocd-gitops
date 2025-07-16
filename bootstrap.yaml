@@ -17,6 +17,11 @@ spec:
         recurse: false
     - repoURL: https://github.com/mirza-src/cc-argocd-gitops.git
       path: projects
+    - repoURL: https://github.com/mirza-src/cc-argocd-gitops.git
+      path: infrastructure
+      directory:
+        recurse: true
+        exclude: "values.yaml"
 
   syncPolicy:
     automated: {}
