@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: php-apache
+  namespace: php-apache
+spec:
+  project: default
+
+  destination:
+    name: in-cluster
+    namespace: php-apache
+
+  sources:
+    - repoURL: https://github.com/mirza-src/cc-argocd-gitops.git
+      path: apps/php-apache
+      directory:
+        recurse: false
+        exclude: "app.{yaml,yml,json}"
