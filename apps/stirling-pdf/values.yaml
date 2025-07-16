@@ -12,3 +12,18 @@ probes:
     initialDelaySeconds: 60
     periodSeconds: 15
     failureThreshold: 10
+
+fullnameOverride: stirling-pdf
+
+ingress:
+  enabled: true
+  ingressClassName: nginx
+
+  hosts:
+    - name: stirling.mirzaesaaf.me
+      path: /
+      tls: true
+      tlsSecret: stirling-pdf-tls
+
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
