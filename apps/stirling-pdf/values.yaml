@@ -1,0 +1,14 @@
+resources:
+  limits:
+    cpu: 500m # Process will be slower but allow more pods to run in limited resources
+
+# Lower CPU limits means container will take longer to start, adjust probes accordingly
+probes:
+  liveness:
+    initialDelaySeconds: 60
+    periodSeconds: 15
+    failureThreshold: 10
+  readiness:
+    initialDelaySeconds: 60
+    periodSeconds: 15
+    failureThreshold: 10
