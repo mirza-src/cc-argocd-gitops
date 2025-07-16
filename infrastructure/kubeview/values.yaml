@@ -1,3 +1,10 @@
 # Show only the pods in a single namespace
 singleNamespace: stirling-pdf
 
+ingress:
+  enabled: true
+  host: kubeview.mirzaesaaf.me
+  tlsSecretName: kubeview-tls
+  className: nginx
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
