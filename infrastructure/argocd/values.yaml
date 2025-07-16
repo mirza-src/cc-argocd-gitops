@@ -1,6 +1,17 @@
 dex:
   enabled: false # Disable Dex, we will be using local ArgoCD authentication
 
+global:
+  domain: argocd.mirzaesaaf.me
+
+server:
+  ingress:
+    enabled: true
+    tls: true
+    ingressClassName: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
+
 configs:
   params:
     server.insecure: "true" # Offload TLS termination to the ingress controller
