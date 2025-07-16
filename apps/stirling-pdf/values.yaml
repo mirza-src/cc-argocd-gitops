@@ -27,3 +27,9 @@ ingress:
 
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
+
+tolerations:
+  - key: "kubernetes.azure.com/scalesetpriority"
+    operator: "Equal"
+    value: "spot"
+    effect: "NoSchedule"
