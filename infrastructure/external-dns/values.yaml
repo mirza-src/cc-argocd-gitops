@@ -1,0 +1,25 @@
+txtOwnerId: aks-cc-project-ci
+
+policy: sync
+
+provider:
+  name: azure
+
+podLabels:
+  azure.workload.identity/use: "true"
+
+serviceAccount:
+  annotations:
+    azure.workload.identity/client-id: 4391e608-c601-4305-9847-7df23fab6a7c
+
+secretConfiguration:
+  # -- If `true`, create a `Secret` to store sensitive provider configuration (**DEPRECATED**).
+  enabled: true
+  mountPath: /etc/kubernetes
+  data:
+    azure.json: |
+      {
+        "subscriptionId": "9a3616bd-69cc-407c-b4c0-473e27174699",
+        "resourceGroup": "rg-cc-project-ci",
+        "useWorkloadIdentityExtension": true
+      }

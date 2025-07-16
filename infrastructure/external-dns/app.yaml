@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: external-dns
+  namespace: ingress
+spec:
+  project: infrastructure
+
+  destination:
+    name: in-cluster
+    namespace: ingress
+
+  sources:
+    - repoURL: https://kubernetes-sigs.github.io/external-dns
+      chart: external-dns
+      targetRevision: "*"
+      helm:
+        ignoreMissingValueFiles: true
+        valueFiles:
+          - $values/infrastructure/external-dns/values.yaml
+    - repoURL: https://github.com/mirza-src/cc-argocd-gitops.git
+      ref: values
