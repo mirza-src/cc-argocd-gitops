@@ -6,3 +6,18 @@ configs:
     server.insecure: "true" # Offload TLS termination to the ingress controller
     controller.diff.server.side: "true"
     application.namespaces: "*"
+
+  cm:
+    # Azure specific ignore differences
+    resource.customizations.ignoreDifferences.admissionregistration.k8s.io_ValidatingWebhookConfiguration:
+      |
+      jqPathExpressions:
+        - .webhooks[].namespaceSelector
+        - .webhooks[].namespaceSelector.matchExpressions[] | select(.key == "control-plane")
+        - .webhooks[].namespaceSelector.matchExpressions[] | select(.key == "kubernetes.azure.com/managedby")
+    resource.customizations.ignoreDifferences.admissionregistration.k8s.io_MutatingWebhookConfiguration:
+      |
+      jqPathExpressions:
+        - .webhooks[].namespaceSelector
+        - .webhooks[].namespaceSelector.matchExpressions[] | select(.key == "control-plane")
+        - .webhooks[].namespaceSelector.matchExpressions[] | select(.key == "kubernetes.azure.com/managedby")
