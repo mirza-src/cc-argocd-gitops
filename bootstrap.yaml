@@ -22,6 +22,11 @@ spec:
       directory:
         recurse: true
         include: "**/app.{yaml,yml,json}"
+    - repoURL: https://github.com/mirza-src/cc-argocd-gitops.git
+      path: apps
+      directory:
+        recurse: true
+        include: "**/app.{yaml,yml,json}"
 
   syncPolicy:
     automated: {}

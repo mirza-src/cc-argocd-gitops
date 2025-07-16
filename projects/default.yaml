@@ -9,6 +9,7 @@ spec:
   sourceNamespaces:
     - default
     - argocd
+    - stirling-pdf
   clusterResourceWhitelist:
     - group: "*"
       kind: "*"
@@ -17,3 +18,8 @@ spec:
       server: "*"
   sourceRepos:
     - "*"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: stirling-pdf
