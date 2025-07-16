@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-nginx
+  namespace: ingress
+spec:
+  project: infrastructure
+
+  destination:
+    name: in-cluster
+    namespace: ingress
+
+  sources:
+    - repoURL: https://kubernetes.github.io/ingress-nginx
+      chart: ingress-nginx
+      targetRevision: "*"
+      helm:
+        ignoreMissingValueFiles: true
+        valueFiles:
+          - $values/infrastructure/ingress-nginx/values.yaml
+    - repoURL: https://github.com/mirza-src/cc-argocd-gitops.git
+      ref: values
