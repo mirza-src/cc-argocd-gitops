@@ -20,8 +20,8 @@ spec:
           - $values/apps/stirling-pdf/values.yaml
     - repoURL: https://github.com/mirza-src/cc-argocd-gitops.git
       ref: values
-    - repoURL: https://github.com/mirza-src/cc-argocd-gitops.git
-      path: apps/stirling-pdf
-      directory:
-        recurse: false
-        include: hpa.{yaml,yml,json}
+    # - repoURL: https://github.com/mirza-src/cc-argocd-gitops.git
+    #   path: apps/stirling-pdf
+    #   directory:
+    #     recurse: false
+    #     include: hpa.{yaml,yml,json}

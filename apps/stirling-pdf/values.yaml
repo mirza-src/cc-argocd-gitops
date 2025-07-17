@@ -1,3 +1,5 @@
+replicaCount: 0 # Disable deployment due to resource constraints
+
 resources:
   limits:
     cpu: 500m # Process will be slower but allow more pods to run in limited resources
