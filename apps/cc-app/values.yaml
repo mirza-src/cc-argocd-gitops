@@ -7,3 +7,20 @@ autoscaling:
   minReplicas: 1
   maxReplicas: 10
   targetCPUUtilizationPercentage: 50
+
+ingress:
+  enabled: true
+  className: nginx
+
+  hosts:
+    - host: cc-app.mirzaesaaf.me
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: cc-app-tls
+      hosts:
+        - cc-app.mirzaesaaf.me
+
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
