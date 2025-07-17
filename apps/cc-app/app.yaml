@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cc-app
+  namespace: cc-app
+spec:
+  project: default
+
+  destination:
+    name: in-cluster
+    namespace: cc-app
+
+  sources:
+    - repoURL: https://github.com/MairaTariq16/cc-app.git
+      path: charts/cc-app
+      helm:
+        ignoreMissingValueFiles: true
+        valueFiles:
+          - $values/apps/cc-app/values.yaml
+    - repoURL: https://github.com/mirza-src/cc-argocd-gitops.git
+      ref: values
