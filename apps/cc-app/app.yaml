@@ -19,3 +19,16 @@ spec:
           - $values/apps/cc-app/values.yaml
     - repoURL: https://github.com/mirza-src/cc-argocd-gitops.git
       ref: values
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - RespectIgnoreDifferences=true
+
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /spec/replicas

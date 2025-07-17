@@ -25,3 +25,16 @@ spec:
     #   directory:
     #     recurse: false
     #     include: hpa.{yaml,yml,json}
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - RespectIgnoreDifferences=true
+
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /spec/replicas

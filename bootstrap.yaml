@@ -29,4 +29,6 @@ spec:
         include: "**/app.{yaml,yml,json}"
 
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: true

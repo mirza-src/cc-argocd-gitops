@@ -20,3 +20,8 @@ spec:
           - $values/infrastructure/cert-manager/values.yaml
     - repoURL: https://github.com/mirza-src/cc-argocd-gitops.git
       ref: values
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
