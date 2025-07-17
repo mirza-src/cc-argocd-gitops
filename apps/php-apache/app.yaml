@@ -15,7 +15,8 @@ spec:
       path: apps/php-apache
       directory:
         recurse: false
-        exclude: "app.{yaml,yml,json}"
+        # Disable deployment due to unavailability of amd64 nodes (image not available for arm64)
+        exclude: "{app,hpa}.{yaml,yml,json}"
 
   syncPolicy:
     automated:

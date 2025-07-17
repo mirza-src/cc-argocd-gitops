@@ -4,6 +4,7 @@ metadata:
   name: php-apache
   namespace: php-apache
 spec:
+  replicas: 0 # Disable deployment due to unavailability of amd64 nodes (image not available for arm64)
   selector:
     matchLabels:
       app.kubernetes.io/name: php-apache
